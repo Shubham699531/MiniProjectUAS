@@ -2,10 +2,13 @@ package com.cg.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -31,6 +34,11 @@ public class Application {
 	@Column(length = 10)
 	private String status;
 	private Date dateOfInterview;
+	
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "offered_program_id")
+	private ProgramsOffered program;
 	
 	public Application() {
 	}
